@@ -1,9 +1,27 @@
-div {
-    display: grid;
-    grid-template-columns: 2fr 2fr 2fr;
+/* body {
+    
+} */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 400px;
+    width: 400px;
+    margin: 0 auto;
+
 }
 .topL, .topM, .topR, .midL, .midM, .midR, .botL, .botM, .botR {
     border: 1px solid black;
-    width: 100px;
-    height: 100px;
+    width: 32%;
+    height: 32%; 
+    margin-bottom: 2%; 
+    font-size: 7rem;
+    margin: 0 auto;
+    text-align: center;
+}
+.inputMessage {
+    font-size: 2rem;
+    }
+p {
+    margin: 0 auto;
 }
