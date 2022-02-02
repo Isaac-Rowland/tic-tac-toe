@@ -1,12 +1,10 @@
-// winner & vars
-var xWin ={
-    win1: [topl, topm, topr],
-    win2: [midl, midm, midr],
-    win3: [botl, botm, botr],
-    win4: [topl, midm, botr],
-    win5: [botl, midm, topr]
-} 
-var oWin =[]
+// winners
+// [topl, topm, topr]
+// [midl, midm, midr]
+// [botl, botm, botr]
+// [topl, midm, botr]
+// [botl, midm, topr]
+// vars
 var input = document.querySelector("p")
 var inputresponse = document.querySelector(".inputMessage")
 var allPlayers = ["X","O"]
@@ -24,41 +22,43 @@ function togglePlayer(){
     }
 }
 
-//Is there a winner? 
-// function isThereAWinner(){
-//     if()
-// }
+// Is there a winner? 
+function isThereAWinner(){
+    if (topL.textContent === "X" && topM.textContent === "X" && topR.textContent === "X" ||midL.textContent === "X" && midM.textContent === "X" && midR.textContent === "X" || botL.textContent === "X" && botM.textContent === "X" && botR.textContent === "X" || topL.textContent === "X" && midM.textContent === "X" && botR.textContent === "X" ||botL.textContent === "X" && midM.textContent === "X" && topR.textContent === "X"){
+        inputresponse.textContent = "Player 1 wins"
+    }
+    else if (topL.textContent === "O" && topM.textContent === "O" && topR.textContent === "O" ||midL.textContent === "O" && midM.textContent === "O" && midR.textContent === "O" || botL.textContent === "O" && botM.textContent === "O" && botR.textContent === "O" || topL.textContent === "O" && midM.textContent === "O" && botR.textContent === "O" ||botL.textContent === "O" && midM.textContent === "O" && topR.textContent === "O"){
+        inputresponse.textContent = "Player 2 wins"
+    }
+}
 //which box has been clicked
 function boxClicked (event) {
     var thisBox = event.target
     if(thisBox.textContent === "X" || thisBox.textContent === "O"){
-        inputresponse.textContent = "pick another box pls"
+        inputresponse.textContent = "Pick another box pls"
     }
     else {
-        inputresponse.textContent = "nice spot"
+        inputresponse.textContent = "Nice spot"
         thisBox.textContent = currentPlayer
-        if(
-
-        )
+        isThereAWinner()
         togglePlayer()
     }
-
 }
-var topl = document.querySelector(".topL")
-topl.addEventListener("click", boxClicked)
-var topm = document.querySelector(".topM")
-topm.addEventListener("click", boxClicked)
-var topr = document.querySelector(".topR")
-topr.addEventListener("click", boxClicked)
-var midl = document.querySelector(".midL")
-midl.addEventListener("click", boxClicked)
-var midm = document.querySelector(".midM")
-midm.addEventListener("click", boxClicked)
-var midr = document.querySelector(".midR")
-midr.addEventListener("click", boxClicked)
-var botl = document.querySelector(".botL")
-botl.addEventListener("click", boxClicked)
-var botm = document.querySelector(".botM")
-botm.addEventListener("click", boxClicked)
-var botr = document.querySelector(".botR")
-botr.addEventListener("click", boxClicked)
+var topL = document.querySelector(".topL")
+topL.addEventListener("click", boxClicked)
+var topM = document.querySelector(".topM")
+topM.addEventListener("click", boxClicked)
+var topR = document.querySelector(".topR")
+topR.addEventListener("click", boxClicked)
+var midL = document.querySelector(".midL")
+midL.addEventListener("click", boxClicked)
+var midM = document.querySelector(".midM")
+midM.addEventListener("click", boxClicked)
+var midR = document.querySelector(".midR")
+midR.addEventListener("click", boxClicked)
+var botL = document.querySelector(".botL")
+botL.addEventListener("click", boxClicked)
+var botM = document.querySelector(".botM")
+botM.addEventListener("click", boxClicked)
+var botR = document.querySelector(".botR")
+botR.addEventListener("click", boxClicked)
