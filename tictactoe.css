@@ -12,6 +12,7 @@
 }
 .boxes {
     border: 1px solid black;
+    border-radius: 10px;
     width: 32%;
     height: 32%; 
     margin-bottom: 2%; 
@@ -21,7 +22,11 @@
 }
 .inputMessage {
     font-size: 2rem;
+    text-align: center;
     }
 p {
     margin: 0 auto;
+}
+.resetbutton {
+    text-align: center;
 }

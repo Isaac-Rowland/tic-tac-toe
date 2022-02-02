@@ -1,9 +1,3 @@
-// winners
-// [topl, topm, topr]
-// [midl, midm, midr]
-// [botl, botm, botr]
-// [topl, midm, botr]
-// [botl, midm, topr]
 // vars
 var inputresponse = document.querySelector(".inputMessage")
 var allPlayers = ["X","O"]
@@ -21,9 +15,14 @@ function togglePlayer(){
     }
 }
 
+// display message pause
+// setTimeout (function(){
+//     inputresponse.textContent = `Player ${currentPlayer} turn`
+// }, 2000)
+
 // Is there a winner? 
 function isThereAWinner(){
-    if (topL.textContent === currentPlayer && topM.textContent === currentPlayer && topR.textContent === currentPlayer ||midL.textContent === currentPlayer && midM.textContent === currentPlayer && midR.textContent === currentPlayer || botL.textContent === currentPlayer && botM.textContent === currentPlayer && botR.textContent === currentPlayer || topL.textContent === currentPlayer && midM.textContent === currentPlayer && botR.textContent === currentPlayer ||botL.textContent === currentPlayer && midM.textContent === currentPlayer && topR.textContent === currentPlayer){
+    if (topL.textContent === currentPlayer && topM.textContent === currentPlayer && topR.textContent === currentPlayer ||midL.textContent === currentPlayer && midM.textContent === currentPlayer && midR.textContent === currentPlayer || botL.textContent === currentPlayer && botM.textContent === currentPlayer && botR.textContent === currentPlayer || topL.textContent === currentPlayer && midM.textContent === currentPlayer && botR.textContent === currentPlayer ||botL.textContent === currentPlayer && midM.textContent === currentPlayer && topR.textContent === currentPlayer || topL.textContent === currentPlayer && midL.textContent === currentPlayer && botL.textContent === currentPlayer || topM.textContent === currentPlayer && midM.textContent === currentPlayer && botM.textContent === currentPlayer || topR.textContent === currentPlayer && midR.textContent === currentPlayer && botR.textContent === currentPlayer ){
         inputresponse.textContent = `Player ${allPlayers.indexOf(currentPlayer) + 1} wins`
     }
 }
@@ -32,13 +31,20 @@ function boxClicked (event) {
     var thisBox = event.target
     // TODO should I use includes or indexOf
     if(allPlayers.includes(thisBox.textContent)){
-        inputresponse.textContent = "Pick another box pls"
+        inputresponse.textContent = "Pick another spot pls"
     }
     else {
         inputresponse.textContent = "Nice spot"
         thisBox.textContent = currentPlayer
-        isThereAWinner(currentPlayer)
-        togglePlayer()
+        if (isThereAWinner(currentPlayer) == true || isThereAWinner(currentPlayer) != "O"){
+        togglePlayer();
+        setTimeout (function(){
+            inputresponse.textContent = `Player ${allPlayers.indexOf(currentPlayer) + 1}s turn`
+        }, 1000)
+        } 
+        else {
+            inputresponse.textContent = "good job on winning"
+        }
     }
 }
 var topL = document.querySelector("#topL")
@@ -61,10 +67,13 @@ var botR = document.querySelector("#botR")
 botR.addEventListener("click", boxClicked)
 
 var restartButton = document.querySelector(".resetbutton")
+var allBoxes = document.querySelectorAll(".boxes")
 // Restart game button 
-// function RestartGame(){
-    restartButton.addEventListener("click", function (){
-        // reset all divs to have nothing in them. 
-    var allBoxes = document.querySelectorAll(".boxes").textContent = ""
-    })
-// }
+function restartGame(){
+    // reset all divs to have nothing in them. 
+    for(i = 0; i < allBoxes.length; i++){
+    allBoxes[i].textContent = ""
+    inputresponse.textContent = "Game restarted"
+    }
+}
+restartButton.addEventListener("click", restartGame)
