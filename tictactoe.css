@@ -1,0 +1,9 @@
+div {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+}
+.topL, .topM, .topR, .midL, .midM, .midR, .botL, .botM, .botR {
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+}
