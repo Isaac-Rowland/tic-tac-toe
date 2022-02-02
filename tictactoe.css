@@ -10,7 +10,7 @@
     margin: 0 auto;
 
 }
-.topL, .topM, .topR, .midL, .midM, .midR, .botL, .botM, .botR {
+.boxes {
     border: 1px solid black;
     width: 32%;
     height: 32%; 
