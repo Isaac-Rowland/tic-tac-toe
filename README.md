@@ -30,3 +30,9 @@ The winner of this game is when someone has three of there character in a row, e
 
 ### step: 6 
 - after winner put in a restart option to go back to start of a blank game. 
+
+
+### things i added 
+- two types of font styles, Rowdies for the X's and O's and text that changes. The other font style is for the headings that do not change. this style is Permanent marker. 
+- Added a resturt button that has an animation when you hover over it and also when you either win or a draw it will animate. 
+- put in a gif as the background. 

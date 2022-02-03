@@ -13,11 +13,14 @@ var playerStats = [
         displayName: "one"
     },
     {
-        color: "#rgba(232, 138, 229, 0.996)",
+        color: "#f090c0",
         icon: "O",
         displayName: "two"
     }
 ]
+var playerOneSound = new Audio("playerOne.mp3")
+var playerTwoSound = new Audio("playerTwo.mp3")
+
 
 //whose turn is it
 var whoseTurn = 0
@@ -63,8 +66,10 @@ function boxClicked (event) {
             thisBox.textContent = currentPlayer
             if (thisBox.textContent == allPlayers[0]){
                 thisBox.style.color = "#70badc"
+                playerOneSound.play()
             } else if (thisBox.textContent == allPlayers[1]){
                 thisBox.style.color = "#f090c0"
+                playerTwoSound.play()
             }
             if (!isThereAWinner(currentPlayer)){
                 howManyTurns++
