@@ -3,6 +3,34 @@ var inputresponse = document.querySelector(".inputMessage")
 var allPlayers = ["X","O"]
 var currentPlayer = allPlayers[0]
 
+/*
+
+//1. get the document
+document
+find the element with this class
+.querySelector(".button")
+
+//3. Store reference to element in a var called button
+var button = document.querySelector(".button")
+
+
+console.log(button) => 
+
+*/
+var button = document.querySelector(".button")
+
+
+// `Player ${allPlayers.indexOf(currentPlayer) + 1}s turn`
+var whoseTurn = 0
+function playersName(){
+    if (currentPlayer == "X"){
+    whoseTurn = "Player One's turn"
+    }
+    else if(currentPlayer == "O"){
+        whoseTurn = "Player Two's turn"
+    }
+    return whoseTurn
+} 
 
 
 // Whose turn is it
@@ -24,29 +52,35 @@ function togglePlayer(){
 function isThereAWinner(){
     if (topL.textContent === currentPlayer && topM.textContent === currentPlayer && topR.textContent === currentPlayer ||midL.textContent === currentPlayer && midM.textContent === currentPlayer && midR.textContent === currentPlayer || botL.textContent === currentPlayer && botM.textContent === currentPlayer && botR.textContent === currentPlayer || topL.textContent === currentPlayer && midM.textContent === currentPlayer && botR.textContent === currentPlayer ||botL.textContent === currentPlayer && midM.textContent === currentPlayer && topR.textContent === currentPlayer || topL.textContent === currentPlayer && midL.textContent === currentPlayer && botL.textContent === currentPlayer || topM.textContent === currentPlayer && midM.textContent === currentPlayer && botM.textContent === currentPlayer || topR.textContent === currentPlayer && midR.textContent === currentPlayer && botR.textContent === currentPlayer ){
         inputresponse.textContent = `Player ${allPlayers.indexOf(currentPlayer) + 1} wins`
-    }
+        // add return in here to check to see if winner
+        return true
+    } 
+    return false
 }
 // which box has been clicked
 function boxClicked (event) {
     var thisBox = event.target
-    // TODO should I use includes or indexOf
     if(allPlayers.includes(thisBox.textContent)){
         inputresponse.textContent = "Pick another spot pls"
     }
     else {
         inputresponse.textContent = "Nice spot"
         thisBox.textContent = currentPlayer
-        if (isThereAWinner(currentPlayer) == true || isThereAWinner(currentPlayer) != "O"){
+        if (!isThereAWinner(currentPlayer)){
         togglePlayer();
         setTimeout (function(){
-            inputresponse.textContent = `Player ${allPlayers.indexOf(currentPlayer) + 1}s turn`
-        }, 1000)
-        } 
+            inputresponse.textContent = `${playersName()}`
+        }, 800)
+        }
         else {
-            inputresponse.textContent = "good job on winning"
+            inputresponse.textContent = "Good job on winning"
+            button.style.backgroundImage = "url(Restart.gif)"
         }
     }
 }
+// if(allBoxes.values != "X" || allBoxes.values != "O"){
+//     inputresponse.textContent = "It's a Draw"
+// }
 var topL = document.querySelector("#topL")
 topL.addEventListener("click", boxClicked)
 var topM = document.querySelector("#topM")
@@ -72,8 +106,16 @@ var allBoxes = document.querySelectorAll(".boxes")
 function restartGame(){
     // reset all divs to have nothing in them. 
     for(i = 0; i < allBoxes.length; i++){
-    allBoxes[i].textContent = ""
-    inputresponse.textContent = "Game restarted"
+        allBoxes[i].textContent = ""
     }
+
+    inputresponse.textContent = `Game restarted`
+    setTimeout (function(){
+        inputresponse.textContent = `Go again!`}, 2000
+    )
+    setTimeout (function(){
+        inputresponse.textContent =`${playersName()}`}, 000
+    )
+    button.style = ""
 }
 restartButton.addEventListener("click", restartGame)

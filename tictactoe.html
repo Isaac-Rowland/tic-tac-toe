@@ -6,10 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="tictactoe.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <header>
+        <h2 class="P1">Player one is X</h2>
+        <h2 class="P2">Player two is O</h2>
+    </header>
     <section class="inputResponse">
-        <p class="inputMessage">Begin Game</p>
+        <h3 class="inputMessage">Begin Game</h3>
     </section>
     <section class="grid">
         <div id="topL" class="boxes">
@@ -41,7 +48,7 @@
         </div>
     </section>
     <section class="resetbutton">
-        <button type="reset">Restart</button>
+        <button class="button" type="reset"></button>
     </section>
     <script src="tictactoe.js"></script>
 </body>
