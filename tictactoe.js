@@ -64,7 +64,7 @@ function boxClicked (event) {
             if (thisBox.textContent == allPlayers[0]){
                 thisBox.style.color = "#70badc"
             } else if (thisBox.textContent == allPlayers[1]){
-                thisBox.style.color = "#rgba(232, 138, 229, 0.996)"
+                thisBox.style.color = "#f090c0"
             }
             if (!isThereAWinner(currentPlayer)){
                 howManyTurns++
