@@ -2,32 +2,20 @@
 var inputresponse = document.querySelector(".inputMessage")
 var allPlayers = ["X","O"]
 var currentPlayer = allPlayers[0]
-
-/*
-
-//1. get the document
-document
-find the element with this class
-.querySelector(".button")
-
-//3. Store reference to element in a var called button
+var gameInProgress = true 
 var button = document.querySelector(".button")
+var howManyTurns = 0
+var displayedText = document.querySelector(".player")
 
 
-console.log(button) => 
-
-*/
-var button = document.querySelector(".button")
-
-
-// `Player ${allPlayers.indexOf(currentPlayer) + 1}s turn`
+//whose turn is it
 var whoseTurn = 0
 function playersName(){
     if (currentPlayer == "X"){
-    whoseTurn = "Player One's turn"
+    whoseTurn = "Player one's turn"
     }
     else if(currentPlayer == "O"){
-        whoseTurn = "Player Two's turn"
+        whoseTurn = "Player two's turn"
     }
     return whoseTurn
 } 
@@ -60,27 +48,36 @@ function isThereAWinner(){
 // which box has been clicked
 function boxClicked (event) {
     var thisBox = event.target
-    if(allPlayers.includes(thisBox.textContent)){
-        inputresponse.textContent = "Pick another spot pls"
-    }
-    else {
-        inputresponse.textContent = "Nice spot"
-        thisBox.textContent = currentPlayer
-        if (!isThereAWinner(currentPlayer)){
-        togglePlayer();
-        setTimeout (function(){
-            inputresponse.textContent = `${playersName()}`
-        }, 800)
+    if(gameInProgress){
+        if(allPlayers.includes(thisBox.textContent)){
+            inputresponse.textContent = "Pick another spot pls"
         }
         else {
-            inputresponse.textContent = "Good job on winning"
-            button.style.backgroundImage = "url(Restart.gif)"
+            inputresponse.textContent = "Nice spot"
+            thisBox.textContent = currentPlayer
+            if (!isThereAWinner(currentPlayer)){
+                howManyTurns++
+                if(howManyTurns == 9){
+                    inputresponse.textContent = "Its a draw"
+                    button.style.backgroundImage = "url(Restart.gif)"
+                }
+                else {
+                    togglePlayer();
+                    setTimeout (function(){
+                    inputresponse.textContent = `${playersName()}`
+                    }, 600)
+                }
+            }
+            else {
+                inputresponse.textContent = "Good job on winning"
+                button.style.backgroundImage = "url(Restart.gif)"
+                gameInProgress = false
+            }
         }
     }
 }
-// if(allBoxes.values != "X" || allBoxes.values != "O"){
-//     inputresponse.textContent = "It's a Draw"
-// }
+
+
 var topL = document.querySelector("#topL")
 topL.addEventListener("click", boxClicked)
 var topM = document.querySelector("#topM")
@@ -114,8 +111,9 @@ function restartGame(){
         inputresponse.textContent = `Go again!`}, 2000
     )
     setTimeout (function(){
-        inputresponse.textContent =`${playersName()}`}, 000
+        inputresponse.textContent =`${playersName()}`}, 4000
     )
     button.style = ""
+    gameInProgress = true
 }
 restartButton.addEventListener("click", restartGame)
