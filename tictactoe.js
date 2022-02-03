@@ -6,6 +6,18 @@ var gameInProgress = true
 var button = document.querySelector(".button")
 var howManyTurns = 0
 var displayedText = document.querySelector(".player")
+var playerStats = [
+    {
+        color: "#70badc",
+        icon: "X",
+        displayName: "one"
+    },
+    {
+        color: "#rgba(232, 138, 229, 0.996)",
+        icon: "O",
+        displayName: "two"
+    }
+]
 
 //whose turn is it
 var whoseTurn = 0
@@ -50,9 +62,9 @@ function boxClicked (event) {
             inputresponse.textContent = "Nice spot"
             thisBox.textContent = currentPlayer
             if (thisBox.textContent == allPlayers[0]){
-                thisBox.style.color = "blue"
+                thisBox.style.color = "#70badc"
             } else if (thisBox.textContent == allPlayers[1]){
-                thisBox.style.color = "red"
+                thisBox.style.color = "#rgba(232, 138, 229, 0.996)"
             }
             if (!isThereAWinner(currentPlayer)){
                 howManyTurns++
