@@ -1,53 +1,42 @@
 // vars
 var inputresponse = document.querySelector(".inputMessage")
 var allPlayers = ["X","O"]
-var currentPlayer = allPlayers[0]
 var gameInProgress = true 
 var button = document.querySelector(".button")
 var howManyTurns = 0
 var displayedText = document.querySelector(".player")
-var playerStats = [
+var currentPlayerNumber = 0
+var playerOneSound = new Audio("playerOne.mp3")
+var playerTwoSound = new Audio("playerTwo.mp3")
+var playerInfo = [
     {
         color: "#70badc",
         icon: "X",
-        displayName: "one"
+        displayName: "Player one",
+        playersound: playerOneSound
     },
     {
         color: "#f090c0",
         icon: "O",
-        displayName: "two"
+        displayName: "Player two",
+        playersound: playerTwoSound
     }
 ]
-var playerOneSound = new Audio("playerOne.mp3")
-var playerTwoSound = new Audio("playerTwo.mp3")
-
-
-//whose turn is it
-var whoseTurn = 0
-function playersName(){
-    if (currentPlayer == "X"){
-    whoseTurn = "Player one"
-    }
-    else if(currentPlayer == "O"){
-        whoseTurn = "Player two"
-    }
-    return whoseTurn
-} 
 
 // Whose turn is it
 function togglePlayer(){
-    if (currentPlayer === allPlayers[0]){
-        currentPlayer = allPlayers[1]
+    if (currentPlayerNumber === 0){
+        currentPlayerNumber = 1
     }
     else {
-        currentPlayer = allPlayers[0]
+        currentPlayerNumber = 0
     }
 }
 
 // Is there a winner? 
-function isThereAWinner(){
+function isThereAWinner(currentPlayer){
     if (topL.textContent === currentPlayer && topM.textContent === currentPlayer && topR.textContent === currentPlayer ||midL.textContent === currentPlayer && midM.textContent === currentPlayer && midR.textContent === currentPlayer || botL.textContent === currentPlayer && botM.textContent === currentPlayer && botR.textContent === currentPlayer || topL.textContent === currentPlayer && midM.textContent === currentPlayer && botR.textContent === currentPlayer ||botL.textContent === currentPlayer && midM.textContent === currentPlayer && topR.textContent === currentPlayer || topL.textContent === currentPlayer && midL.textContent === currentPlayer && botL.textContent === currentPlayer || topM.textContent === currentPlayer && midM.textContent === currentPlayer && botM.textContent === currentPlayer || topR.textContent === currentPlayer && midR.textContent === currentPlayer && botR.textContent === currentPlayer ){
-        displayedText.textContent = `Player ${allPlayers.indexOf(currentPlayer) + 1} wins`
+        displayedText.textContent = `Player ${currentPlayerNumber + 1} wins`
         // add return in here to check to see if winner
         return true
     } 
@@ -63,15 +52,10 @@ function boxClicked (event) {
         }
         else {
             inputresponse.textContent = "Nice spot"
-            thisBox.textContent = currentPlayer
-            if (thisBox.textContent == allPlayers[0]){
-                thisBox.style.color = "#70badc"
-                playerOneSound.play()
-            } else if (thisBox.textContent == allPlayers[1]){
-                thisBox.style.color = "#f090c0"
-                playerTwoSound.play()
-            }
-            if (!isThereAWinner(currentPlayer)){
+            thisBox.textContent = playerInfo[currentPlayerNumber].icon
+            thisBox.style.color = playerInfo[currentPlayerNumber].color
+            playerInfo[currentPlayerNumber].playersound.play()
+            if (!isThereAWinner(playerInfo[currentPlayerNumber].icon)){
                 howManyTurns++
                 if(howManyTurns == 9){
                     inputresponse.textContent = "Its a draw"
@@ -80,7 +64,7 @@ function boxClicked (event) {
                 else {
                     togglePlayer();
                     setTimeout (function(){
-                    displayedText.textContent = `${playersName()}'s turn`
+                    displayedText.textContent = `${playerInfo[currentPlayerNumber].displayName}'s turn`
                     }, 600)
                 }
             }
@@ -109,8 +93,9 @@ function restartGame(){
     setTimeout (function(){
         inputresponse.textContent = `Go again!`}, 2000
     )
-    displayedText.textContent =`${playersName()}'s turn`
+    displayedText.textContent =`${playerInfo[currentPlayerNumber].displayName}'s turn`
     button.style = ""
     gameInProgress = true
+    howManyTurns = 0
 }
 restartButton.addEventListener("click", restartGame)
