@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,52 +8,60 @@
     <title>Document</title>
     <link rel="stylesheet" href="tictactoe.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header>
-        <h2 class="P1">Player one is X</h2>
-        <h2 class="P2">Player two is O</h2>
+        <h1>Tic Tac Toe Time</h1>
+        <section class="allPlayers">
+            <h2 class="P1">Player one is X</h2>
+            <h2 class="P2">Player two is O</h2>
+        </section>
     </header>
     <section class="inputResponse">
         <h3 class="inputMessage">Begin Game</h3>
     </section>
-    <section class="grid">
-        <div id="topL" class="boxes">
-            <p class="tl"></p>
-        </div>
-        <div id="topM" class="boxes">
-            <p class="tm"></p>
-        </div>
-        <div id="topR" class="boxes">
-            <p class="tr"></p>
-        </div>
-        <div id="midL" class="boxes">
-            <p class="ml"></p>
-        </div>
-        <div id="midM" class="boxes">
-            <p class="mm"> </p>
-        </div>
-        <div id="midR" class="boxes">
-            <p class="mr"></p>
-        </div>
-        <div id="botL" class="boxes">
-            <p class="bl"> </p>
-        </div>
-        <div id="botM" class="boxes">
-            <p class="bm"></p>
-        </div>
-        <div id="botR" class="boxes">
-            <p class="br"></p>
-        </div>
-    </section>
+        <section class="grid">
+            <div id="topL" class="boxes">
+                <p class="tl"></p>
+            </div>
+            <div id="topM" class="boxes">
+                <p class="tm"></p>
+            </div>
+            <div id="topR" class="boxes">
+                <p class="tr"></p>
+            </div>
+            <div id="midL" class="boxes">
+                <p class="ml"></p>
+            </div>
+            <div id="midM" class="boxes">
+                <p class="mm"> </p>
+            </div>
+            <div id="midR" class="boxes">
+                <p class="mr"></p>
+            </div>
+            <div id="botL" class="boxes">
+                <p class="bl"> </p>
+            </div>
+            <div id="botM" class="boxes">
+                <p class="bm"></p>
+            </div>
+            <div id="botR" class="boxes">
+                <p class="br"></p>
+            </div>
+        </section>
     <section class="display">
-        <p class="player"></p>
+        <p class="player">Player one's turn</p>
     </section>
-    <section class="resetbutton">
+    <section class="restartButton">
         <button class="button" type="reset"></button>
     </section>
     <script src="tictactoe.js"></script>
 </body>
+
 </html>

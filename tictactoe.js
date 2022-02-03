@@ -49,6 +49,11 @@ function boxClicked (event) {
         else {
             inputresponse.textContent = "Nice spot"
             thisBox.textContent = currentPlayer
+            if (thisBox.textContent == allPlayers[0]){
+                thisBox.style.color = "blue"
+            } else if (thisBox.textContent == allPlayers[1]){
+                thisBox.style.color = "red"
+            }
             if (!isThereAWinner(currentPlayer)){
                 howManyTurns++
                 if(howManyTurns == 9){
@@ -74,7 +79,7 @@ function boxClicked (event) {
 var boxes = document.querySelector(".grid")
 boxes.addEventListener("click", boxClicked)
 
-var restartButton = document.querySelector(".resetbutton")
+var restartButton = document.querySelector(".button")
 var allBoxes = document.querySelectorAll(".boxes")
 // Restart game button 
 function restartGame(){
@@ -87,9 +92,7 @@ function restartGame(){
     setTimeout (function(){
         inputresponse.textContent = `Go again!`}, 2000
     )
-    setTimeout (function(){
-        displayedText.textContent =`${playersName()}`}, 4000
-    )
+    displayedText.textContent =`${playersName()}'s turn`
     button.style = ""
     gameInProgress = true
 }
