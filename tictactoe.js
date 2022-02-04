@@ -7,7 +7,7 @@ var howManyTurns = 0
 var displayedText = document.querySelector(".player")
 var currentPlayerNumber = 0
 var playerOneSound = new Audio("playerOne.mp3")
-var playerTwoSound = new Audio("PlayerTwo.mp3")
+var playerTwoSound = new Audio("playerTwo.mp3")
 var playerInfo = [
     {
         color: "#70badc",
