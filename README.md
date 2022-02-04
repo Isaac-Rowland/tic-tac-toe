@@ -1,8 +1,9 @@
 # tic-tac-toe
 ## play my game 
-https://isaac-rowland.github.io/tic-tac-toe/
-tic tac toe is a 3*3 two player game that is taken in turns one by one. 
-The winner of this game is when someone has three of there character in a row, either horizontal, diagonal or vertically 
+https://isaac-rowland.github.io/tic-tac-toe/tictactoe.html
+### what is Tic Tac Toe
+- tic tac toe is a 3*3 two player game that is taken in turns one by one. 
+-The winner of this game is when someone has three of there character in a row, either horizontal, diagonal or vertically 
 
 ### step 1:
 - create 9 divs

@@ -27,8 +27,7 @@ var playerInfo = [
 function togglePlayer(){
     if (currentPlayerNumber === 0){
         currentPlayerNumber = 1
-    }
-    else {
+    } else {
         currentPlayerNumber = 0
     }
 }
@@ -49,8 +48,7 @@ function boxClicked (event) {
     if(gameInProgress){
         if(allPlayers.includes(thisBox.textContent)){
             inputresponse.textContent = "Pick another spot pls"
-        }
-        else {
+        } else {
             inputresponse.textContent = "Nice spot"
             thisBox.textContent = playerInfo[currentPlayerNumber].icon
             thisBox.style.color = playerInfo[currentPlayerNumber].color
@@ -60,15 +58,13 @@ function boxClicked (event) {
                 if(howManyTurns == 9){
                     inputresponse.textContent = "Its a draw"
                     button.style.backgroundImage = "url(Restart.gif)"
-                }
-                else {
+                } else {
                     togglePlayer();
                     setTimeout (function(){
                     displayedText.textContent = `${playerInfo[currentPlayerNumber].displayName}'s turn`
                     }, 600)
                 }
-            }
-            else {
+            }else {
                 inputresponse.textContent = "Good job on winning"
                 button.style.backgroundImage = "url(Restart.gif)"
                 gameInProgress = false
